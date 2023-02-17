@@ -1,0 +1,70 @@
+{
+  // Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Main(driver)": {
+    "prefix": ["main", "name", "__name__"],
+    "body": ["if __name__ == '__main__':\n\t${0:pass}"],
+    "description": "Main section"
+  },
+  "Long line": {
+    "prefix": "line",
+    "body": ["print('----------------------------------------')\n$0"],
+    "description": "horizontal seperator size 40"
+  },
+  "File IO": {
+    "prefix": ["io", "fileio"],
+    "body": [
+      "import sys",
+      "sys.stdin = open(\"in.txt\", \"r\")\n",
+      "#sys.stdin = open(\"out.txt\", \"r\")\n"
+    ]
+  },
+  "Competitive Programming": {
+    "prefix": ["comp", "cases"],
+    "body": [
+      "def func1($2): # Solve and output",
+      "    ${3:pass}",
+      "",
+      "if __name__ == '__main__':",
+      "    cases = 1 ${1:#}; cases = int(input())",
+      "    for i in range(cases):",
+      "        ${2:inputs,}_, *_ = [*map(int, filter(len, input().split(' '))), None]",
+      "        func1($2)",
+      ""
+    ],
+    "description": ""
+  },
+  "Scripting Skeleton for Python": {
+    "prefix": ["scr", "sh"],
+    "body": [
+      "#!/usr/bin/env python3",
+      "\n${1:#code}",
+      "\ndef driver():\n\t${2:pass}",
+      "\nif __name__ == '__main__':",
+      "\tdriver()$3"
+    ],
+    "description": "Scripting Skeleton for Python3"
+  },
+  "Selenium boilerplate": {
+    "prefix": "sel",
+    "body": [
+      "from webdriver_manager.chrome import ChromeDriverManager",
+      "from selenium import webdriver",
+      "browser = webdriver.Chrome(ChromeDriverManager().install())",
+      "browser.get('${1:https://www.google.com}')",
+      "${0}"
+    ],
+    "description": "Selenium boilerplate for python3"
+  }
+}

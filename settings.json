@@ -1,0 +1,374 @@
+{
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        // execution template: Go to file, compile(?), clear screen, run, wait(?)
+        // code-runner variables: https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner#configuration
+        "cpp": "cd $dir && clear && g++ -std=c++17 $fileName -o obj_$fileNameWithoutExt.out && ./obj_$fileNameWithoutExt.out",
+        "c": "cd $dir && clear && gcc $fileName -o obj_$fileNameWithoutExt.out && ./obj_$fileNameWithoutExt.out",
+        "python": "cd $dir && clear && $pythonPath -u $fullFileName",
+        "java": "cd $dir && clear && javac $fileName && java $fileNameWithoutExt",
+        "typescript": "cd $dir && clear && tsc $fileName && node $fileNameWithoutExt.js"
+    },
+    // for other tasks
+    "code-runner.executorMapByFileExtension": {
+        //.txt for checking if code ran properly
+        ".txt": "if [ \"$(head 10 | diff -N $fullFileName $dir/ideal_out.txt)\" == '' ]; then clear && echo 'Passed!!' && echo ''; else clear && echo 'Failed--->' && echo ''; diff -N out.txt ideal_out.txt | head -6; fi;",
+        // ".m": "cd $dir && clear && octave -q --persist $fileName && read && quit"
+    },
+    //hidden files
+    "files.exclude": {
+        // VCS
+        "**/.git": true,
+        "**/.gitignore": true,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false,
+        // vscode
+        "**/.vscode": true, // per-folder settings
+        "**/tempCodeRunner*": true, // saved dirty file
+        // lang based
+        "**/__pycache__": true, // Python cache
+        "**/obj_*.out": true, // C++ object(executable)
+        "**/*.class": true, // Java class
+        // React uneccessary files
+        "**/serviceWorker.js": false,
+        "**/setupTests.js": false,
+        // misc
+        "**/[0-9]*.[0-9]*_*.txt": false, // zim page
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.autoSaveDelay": 10,
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "afterDelay",
+    "files.maxMemoryForLargeFilesMB": 40,
+    "files.insertFinalNewline": true,
+    "editor.fontFamily": "monospace",
+    "editor.lineHeight": 0,
+    "editor.fontLigatures": true,
+    "editor.cursorBlinking": "blink",
+    "editor.cursorStyle": "line",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+    "editor.suggestSelection": "first",
+    "editor.codeLens": true,
+    "editor.quickSuggestionsDelay": 1,
+    "editor.renderWhitespace": "none",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": false,
+    "editor.autoClosingOvertype": "always",
+    "window.menuBarVisibility": "toggle",
+    // git
+    "git.autorefresh": false,
+    "git.autofetch": false,
+    "git.confirmSync": false,
+    "git.autoRepositoryDetection": false,
+    "C_Cpp.updateChannel": "Default",
+    "C_Cpp.default.enableConfigurationSquiggles": true,
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.intelliSenseEngine": "Default",
+    // Python3
+    // "python.defaultInterpreterPath": "python",
+    "python.jediEnabled": false,
+    "python.autoComplete.addBrackets": true,
+    "python.linting.banditEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.executeInFileDir": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.analysis.memory.keepLibraryLocalVariables": true,
+    "python.testing.cwd": "string",
+    "python.showStartPage": true,
+    // "python.autoComplete.extraPaths": [
+    // 	"/usr/bin/python3/"
+    // ],
+    // java
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.semanticHighlighting.enabled": true,
+    "java.refactor.renameFromFileExplorer": "preview",
+    "java.dependency.autoRefresh": false,
+    "java.completion.guessMethodArguments": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // sync
+    "sync.gist": "9779d3fb2e7e562ae68fbaab7874a824",
+    "sync.forceDownload": false,
+    "sync.autoUpload": false,
+    "sync.autoDownload": false,
+    "sync.quietSync": true,
+    "sync.removeExtensions": false,
+    "sync.syncExtensions": true,
+    // emmet
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.triggerExpansionOnTab": true,
+    // zenmode
+    "zenMode.centerLayout": false,
+    "zenMode.hideTabs": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideLineNumbers": true,
+    "workbench.panel.defaultLocation": "right",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.statusBar.color": "red",
+    "workbench.colorCustomizations": {},
+    // terminal
+    "terminal.integrated.scrollback": 500,
+    "terminal.integrated.enableBell": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.rendererType": "canvas",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.fontSize": 15,
+    // explorer
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.autoReveal": false,
+    // formatter w.r.t language
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[md]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[Octave]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[ruby]": {
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
+    },
+    // Settings sync
+    "settingsSync.ignoredSettings": [],
+    "settingsSync.ignoredExtensions": [],
+    //theme by lang - extension
+    "theme-by-language.themes": {
+        "*": "One Dark Pro",
+        "cpp": "One Monokai",
+        "python": "Cobalt2",
+        "javascript": "One Dark Pro",
+        "c": "One Monokai",
+        "markdown": "One Dark Pro",
+        "html": "One Dark Pro",
+        "shellscript": "Cobalt2",
+        "plaintext": "Cobalt2",
+        "csv": "One Dark Pro",
+        "json": "Cobalt2",
+        "octave": "Cobalt2",
+        "java": "One Monokai",
+        "ipynb": "Default Light+",
+        "ruby": "One Dark Pro Darker",
+        "javascriptreact": "One Dark Pro Darker"
+    },
+    // arduino
+    "arduino.path": "/opt/arduino-1.8.12",
+    "arduino.additionalUrls": "",
+    "arduino.logLevel": "info",
+    "arduino.enableUSBDetection": true,
+    // live server
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    // others--------------------------------
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "debug.onTaskErrors": "abort",
+    "debug.console.fontSize": 15,
+    "vsicons.dontShowNewVersionMessage": true,
+    "octave.clearPreviousOutput": true,
+    "quokka.colors": {
+        "covered": "#62b455",
+        "errorPath": "#ffa0a0",
+        "errorSource": "#fe536a",
+        "notCovered": "#cccccc",
+        "partiallyCovered": "#d2a032"
+    },
+    "workbench.colorTheme": "Cobalt2",
+    "terminal.integrated.localEchoLatencyThreshold": 0,
+    "terminal.integrated.localEchoStyle": "dim",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "java.configuration.runtimes": [],
+    "explorer.incrementalNaming": "smart",
+    "python.analysis.completeFunctionParens": true,
+    "python.languageServer": "Pylance",
+    "scratchpads.promptForRemoval": false,
+    "files.associations": {
+        ".megasyncignore": "ignore"
+    },
+    "editor.renderLineHighlight": "all",
+    "jupyter.askForKernelRestart": false,
+    "terminal.integrated.fontFamily": "monospace",
+    "editor.largeFileOptimizations": false,
+    "todo-tree.tree.showScanModeButton": false,
+    "quokka.showOutputOnStart": false,
+    "debug.inlineValues": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "extensions.autoUpdate": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.linkedEditing": true,
+    "editor.fontSize": 16,
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjowLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODUwLFwiaGVpZ2h0XCI6MTEwMH0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0=",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "workbench.activityBar.visible": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.sideBar.location": "right",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "markup.list",
+                "settings": {
+                    "foreground": "#6c7500",
+                },
+            },
+            {
+                "scope": "markup.bold",
+                "settings": {
+                    "fontStyle": "bold",
+                },
+            },
+            {
+                "scope": "markup.heading",
+                "settings": {
+                    "fontStyle": "bold",
+                },
+            },
+            {
+                "scope": "markup.inline.raw",
+                "settings": {
+                    "fontStyle": "bold",
+                    "foreground": "#707070",
+                },
+            },
+            {
+                "scope": "string.other.link.title.markdown",
+                "settings": {
+                    "fontStyle": "underline",
+                },
+            },
+        ],
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "window.experimental.commandCenter": true,
+    "tabnine.experimentalAutoImports": true,
+    "window.zoomLevel": 1,
+    // "profileSwitcher.profiles": [],
+    // "profileSwitcher.extensions": {},
+    // "profileSwitcher.extensionsIgnore": [
+    //     // itself
+    //     "aaronpowell.vscode-profile-switcher",
+    //     // basic
+    //     "atishay-jain.all-autocomplete",
+    //     "aaron-bond.better-comments",
+    //     "coenraads.bracket-pair-colorizer-2",
+    //     "formulahendry.code-runner",
+    //     "softwaredotcom.swdc-vscode",
+    //     "kameshkotwani.google-search",
+    //     "esbenp.prettier-vscode",
+    //     "yzhang.markdown-all-in-one",
+    //     "alefragnani.numbered-bookmarks",
+    //     "esbenp.prettier-vscode",
+    //     "alefragnani.project-manager",
+    //     "shan.code-settings-sync",
+    //     "devwright.vscode-terminal-capture",
+    //     "visualstudioexptteam.vscodeintellicode",
+    //     "streetsidesoftware.code-spell-checker",
+    //     // theming software
+    //     "wesbos.theme-cobalt2",
+    //     "zhuangtongfa.material-theme",
+    //     "azemoh.one-monokai",
+    //     "vscode-icons-team.vscode-icons",
+    //     "jsaulou.theme-by-language",
+    //     // "ms-vsliveshare.vsliveshare-audio",
+    //     // "ms-vsliveshare.vsliveshare-pack",
+    //     // "ms-vsliveshare.vsliveshare",
+    // ],
+}
+/*
+For cpp,
+comment besides a variable shows its property
+comment above a function shows its property
+*/
+// Pure CPP settings
+/*
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": [],
+      "compilerPath": "/usr/bin/g++-7",
+      "intelliSenseMode": "clang-x64",
+      "cppStandard": "c++17",
+      "cStandard": "c11"
+    },
+    {
+      "name": "Win32",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "compilerPath": "C:\\cygwin64\\bin\\gcc.exe",
+      "intelliSenseMode": "clang-x64"
+    }
+  ],
+  "version": 4
+}
+
+*/
+//For arduino, replace when using it
+// Arduino settings
+/*
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": ["${workspaceFolder}/**", "/opt/arduino-1.8.12/**"],
+      "defines": [],
+      "compilerPath": "/usr/bin/g++-7",
+      "intelliSenseMode": "clang-x64",
+      "cppStandard": "c++17",
+      "cStandard": "c11"
+    },
+    {
+      "name": "Win32",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "compilerPath": "C:\\cygwin64\\bin\\gcc.exe",
+      "intelliSenseMode": "clang-x64"
+    }
+  ],
+  "version": 4
+}
+*/
